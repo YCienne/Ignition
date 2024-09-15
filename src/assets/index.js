@@ -37,14 +37,13 @@ import raindrop from "./collaboration/raindrop.png";
 import slack from "./collaboration/slack.png";
 
 import service1 from "./services/IG.mp4";
-import service2 from "./services/Ign.mp4";
+import about2 from "./services/Ign.mp4";
 import service3 from "./services/ser.jpg";
 import gal1 from "./services/gal1.jpg";
 import gal2 from "./services/gal2.jpg";
 import gal3 from "./services/gal3.jpg";
 import gal4 from "./services/gal4.jpg";
 import gal5 from "./services/gal5.jpg";
-import gal6 from "./services/gal6.jpg";
 import gal7 from "./services/gal7.jpg";
 import gal8 from "./services/gal8.jpg";
 import gal9 from "./services/gal10.jpg";
@@ -122,11 +121,11 @@ export {
   raindrop,
   slack,
   service1,
-  service2,
+  about2,
   service3,
   gal1,
   gal2,
-  gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10,
+  gal3, gal4, gal5, gal7, gal8, gal9, gal10,
   lines,
   stars,
   coins,

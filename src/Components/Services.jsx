@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Heading from "./Heading";
 import Section from "./Section";
 import { roadmap } from "../constants";
@@ -54,7 +53,9 @@ const Services = () => (
     </div>
 
     <div className="flex justify-center mt-12 md:mt-15 xl:mt-20">
-        <Button href="/booking">Book Us Now</Button>
+    <a href="#Footer" className="button hidden mr-8 text-n-4 transition-colors hover:text-n-1 lg:block">
+            Call us now
+            </a>
     </div>
     </div>
 </Section>

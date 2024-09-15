@@ -55,16 +55,11 @@ export const navigation = [
   },
   {
     id: "4",
-    title: "Contact Us",
-    url: "#contact",
+    title: "Contact",
+    url: "#Footer",
     onlyMobile: true,
   },
-  {
-    id: "5",
-    title: "Book Here",
-    url: "#bookings",
-    onlyMobile: true,
-  },
+  
 ];
 
 export const heroIcons = [homeSmile, file02, searchMd, plusSquare];
@@ -200,7 +195,7 @@ export const pricing = [
     description: "Under 15 years",
     price: "50.00",
     features: [
-      "Bring your kids kjkjhfg jkkfdk kjdfkj",
+      "Bring your kids",
     ],
   },
   
@@ -208,9 +203,9 @@ export const pricing = [
     id: "2",
     title: "Adult",
     description: "15 years and Older",
-    price: "200",
+    price: "80.00",
     features: [
-      "Adult packages hgjhf jhdjikhd kjdhgk",
+      "Adult package",
       
     ],
   },
@@ -270,17 +265,17 @@ export const benefits = [
 ];
 
 export const socials = [
-  {
+  /*{
     id: "1",
     title: "Twitter",
     iconUrl: twitter,
     url: "#",
-  },
+  }*/
   {
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "#",
+    url: "https://www.instagram.com/ignition_events_center?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
   },
   {
     id: "4",
