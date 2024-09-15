@@ -1,6 +1,6 @@
 import Heading from "./Heading";
 import Section from "./Section";
-import { roadmap } from "../constants";
+import { service } from "../constants";
 import { grid} from "../assets";
 import { Gradient } from "./design/Roadmap";
 
@@ -10,7 +10,7 @@ const Services = () => (
         <Heading tag="Our Services" title="What we offer at Ignition" />
 
         <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-[7rem]">
-        {roadmap.map((item) => {
+        {service.map((item) => {
             const status = item.status === "done" ? "Done" : "In progress";
 
             return (
