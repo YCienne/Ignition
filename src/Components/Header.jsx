@@ -1,61 +1,86 @@
 import { ignition } from "../assets";
-import { navigation } from '../constants';
-import Button from "./Button"
-import MenuSvg from '../assets/svg/MenuSvg'
-import { HamburgerMenu } from './design/Header'
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-
-
+import { navigation } from "../constants";
+import Button from "./Button";
+import MenuSvg from "../assets/svg/MenuSvg";
+import { HamburgerMenu } from "./design/Header";
+import { useState, useEffect } from "react";
 
 const Header = () => {
-    const pathname = useLocation();
-    const [openNavigation, setopenNavigation] = useState(false);
-    const toggleNavigation = () => {
-        if (openNavigation) {
-            setopenNavigation(false);
-        } else {
-            setopenNavigation(true)
-        }
+  const [openNavigation, setOpenNavigation] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const toggleNavigation = () => {
+    setOpenNavigation((prev) => !prev);
+  };
+
+  const handleClick = () => {
+    setOpenNavigation(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const handleClick = () => {
-        setopenNavigation(false)
-    }
-    return (
-        <div
-            className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
-            openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
-            }`}
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        openNavigation
+          ? "bg-[#1c2c4d]" // fallback on mobile open
+          : "bg-transparent backdrop-blur-md"
+      } ${scrolled ? "bg-[rgba(10,24,46,0.7)] shadow-md border-b border-white/10" : ""}`}
+    >
+      <div
+        className={`flex items-center px-5 lg:px-10 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-4 lg:py-6"
+        }`}
+      >
+        {/* Logo */}
+        <a className="block w-[10rem] xl:mr-8" href="#hero">
+          <img src={ignition} width={140} height={20} alt="ignition" />
+        </a>
+
+        {/* Navigation */}
+        <nav
+          className={`${
+            openNavigation ? "flex" : "hidden"
+          } fixed top-[5rem] left-0 right-0 bottom-0 bg-[#1c2c4d] lg:static lg:flex lg:mx-auto lg:bg-transparent`}
         >
-            <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-            <a className="block w-[12rem] xl:mr-8" href="#hero">
-                <img src={ignition} width={140} height={20} alt="ignition" />
-            </a>
+          <div className="relative z-10 flex flex-col items-center justify-center m-auto lg:flex-row">
+            {navigation.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                onClick={handleClick}
+                className={`block font-code text-2xl uppercase text-white transition-colors hover:text-blue-400 px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-sm lg:font-semibold ${
+                  item.onlyMobile ? "lg:hidden" : ""
+                }`}
+              >
+                {item.title}
+              </a>
+            ))}
+          </div>
+          <HamburgerMenu />
+        </nav>
 
-            <nav className={` ${openNavigation ? 'flex' : 'hidden'} fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}>
-                <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
-                    {navigation.map((item) => (
-                        <a key={item.id} href={item.url} onClick={handleClick} className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${item.onlyMobile ? "lg:hidden" : ""} px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold`}>
-                            {item.title}
-                        </a>
-                    ))}
+        {/* Contact Link */}
+        <a
+          href="#Footer"
+          className="hidden lg:block text-white/60 hover:text-white transition-colors text-sm mr-6"
+        >
+          Contact
+        </a>
 
-                </div>
-                <HamburgerMenu />
-            </nav>
-            <a href="#Footer" className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block">
-            Contact
-            </a>
-            
-            
-
-            <Button className="ml-auto lg:hidden" px="px-3" onClick={toggleNavigation}>
-                <MenuSvg openNavigation={openNavigation}/>
-            </Button>
-            </div>
-        </div>
-    );
+        {/* Mobile Toggle */}
+        <Button className="ml-auto lg:hidden" px="px-3" onClick={toggleNavigation}>
+          <MenuSvg openNavigation={openNavigation} />
+        </Button>
+      </div>
+    </header>
+  );
 };
 
-export default Header
+export default Header;

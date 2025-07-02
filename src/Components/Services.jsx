@@ -1,64 +1,91 @@
-import Heading from "./Heading";
-import Section from "./Section";
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import { service } from "../constants";
-import { grid} from "../assets";
-import { Gradient } from "./design/Roadmap";
 
-const Services = () => (
-    <Section crosses className="overflow-hidden" id="roadmap">
-    <div className="container md:pb-10">
-        <Heading tag="Our Services" title="What we offer at Ignition" />
+const ServicesPage = () => {
+  const [openModal, setOpenModal] = useState(null);
 
-        <div className="relative grid gap-6 md:grid-cols-2 md:gap-4 md:pb-[7rem]">
-        {service.map((item) => {
-            const status = item.status === "done" ? "Done" : "In progress";
+  const closeModal = () => setOpenModal(null);
 
-            return (
-            <div
-                className={`md:flex even:md:translate-y-[7rem] p-0.25 rounded-[2.5rem] ${
-                item.colorful ? "bg-conic-gradient" : "bg-n-6"
-                }`}
-                key={item.id}
-            >
-                <div className="relative p-8 bg-n-8 rounded-[2.4375rem] overflow-hidden xl:p-15">
-                <div className="absolute top-0 left-0 max-w-full">
-                    <img
-                    className="w-full"
-                    src={grid}
-                    width={550}
-                    height={550}
-                    alt="Grid"
-                    />
-                </div>
-                <div className="relative z-1">
-                    
-                <div className="mb-10 -my-10 -mx-15">
-                    <img
-                    className="w-full"
-                    src={item.imageUrl}
-                    width={628}
-                    height={426}
-                    alt={item.title}
-                    />
-                </div>
-                    <h4 className="h4 mb-4">{item.title}</h4>
-                    <p className="body-2 text-n-4">{item.text}</p>
-                </div>
+  return (
+    <div className="bg-[#020c1b] text-white min-h-screen py-20 px-4 relative" id="services">
+      <div className="max-w-6xl mx-auto text-center mb-16">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">Our Services</h1>
+        <p className="text-lg text-gray-300">
+          Discover immersive experiences curated just for you.
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        {service.map((item) => (
+          <div
+            key={item.id}
+            className="cursor-pointer bg-[#0a182e] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300"
+            onClick={() => setOpenModal(item.id)}
+          >
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              className="w-full h-56 object-cover"
+            />
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-300">{item.text}</p>
             </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Modals */}
+      {service.map((item) =>
+        item.id === openModal ? (
+          <div
+            key={item.id}
+            className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center px-4"
+          >
+            <div className="bg-[#0a182e] rounded-xl max-w-3xl w-full shadow-2xl overflow-hidden relative">
+              <div className="flex justify-between items-center p-5 border-b border-gray-700">
+                <h2 className="text-2xl font-bold">{item.title}</h2>
+                <button
+                  onClick={closeModal}
+                  className="text-gray-400 hover:text-white text-2xl"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <Swiper
+                modules={[Navigation, Pagination]}
+                navigation
+                pagination={{ clickable: true }}
+                className="w-full h-[400px]"
+              >
+                {item.gallery.map((img, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={img}
+                      alt={`Gallery ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <div className="p-6 text-gray-300">
+                <p>{item.text}</p>
+              </div>
             </div>
-        );
-        })}
-
-        <Gradient />
+          </div>
+        ) : null
+      )}
     </div>
+  );
+};
 
-    <div className="flex justify-center mt-12 md:mt-15 xl:mt-20">
-    <a href="#Footer" className="button hidden mr-8 text-n-4 transition-colors hover:text-n-1 lg:block">
-            Call us now
-            </a>
-    </div>
-    </div>
-</Section>
-);
-
-export default Services;
+export default ServicesPage;

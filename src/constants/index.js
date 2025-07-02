@@ -16,16 +16,21 @@ export const navigation = [
   {
     id: "1",
     title: "Services",
-    url: "#roadmap",
+    url: "#services",
   },
   
   {
     id: "3",
-    title: "Pricing",
+    title: "Swimming Packages",
     url: "#pricing",
   },
   {
     id: "4",
+    title: "Book Space Here",
+    url: "#",
+  },
+  {
+    id: "5",
     title: "Contact",
     url: "#Footer",
     onlyMobile: true,
@@ -41,54 +46,120 @@ export const service = [
     title: "Swimming Lessons",
     text: "We offer swimming lessons for all people",
     imageUrl: serv1,
-    colorful: true,
+    gallery: [
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+    ]
   },
   {
     id: "1",
     title: "Drinking and relaxing Pub",
     text: "Bar and lounge, Games",
     imageUrl: serv2,
+    gallery: [
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+    ]
   },
   {
     id: "2",
     title: "Event Planning",
     text: "Come plan your events with us",
     imageUrl: serv3,
+    gallery: [
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+    ]
   },
   {
     id: "3",
     title: "Lodging",
     
     imageUrl: serv4,
-    colorful: true,
+    gallery: [
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+    ]
+    
+  },
+  {
+    id: "3",
+    title: "Restaurant",
+    
+    imageUrl: serv4,
+    gallery: [
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+      serv1,
+    ]
     
   },
 ];
 
 
 
-export const pricing = [
+// constants/index.js
+
+export const swimmingPackages = [
   {
-    id: "0",
-    title: "Children",
-    description: "Under 15 years",
-    price: "50.00",
+    id: 1,
+    title: "Beginner Package",
+    price: "₵200/month",
     features: [
-      "Bring your kids",
+      "2 sessions/week",
+      "Free swim cap",
+      "Coach-guided basics",
+      "Beginner-friendly pool access",
     ],
   },
-  
   {
-    id: "1",
-    title: "Adult",
-    description: "15 years and Older",
-    price: "80.00",
+    id: 2,
+    title: "Intermediate Package",
+    price: "₵350/month",
     features: [
-      "Adult package",
-      
+      "3 sessions/week",
+      "Access to technique drills",
+      "Video analysis",
+      "Pool + gym included",
+    ],
+  },
+  {
+    id: 3,
+    title: "Family Package",
+    price: "₵500/month",
+    features: [
+      "Up to 4 members", 
+      "Weekend sessions",
+      "Group instructor"
+      ],
+  },
+  {
+    id: 3,
+    title: "Advanced Training",
+    price: "₵700/month",
+    features: [
+      "5 sessions/week",
+      "Competition prep",
+      "Nutrition guidance",
+      "1-on-1 coaching",
     ],
   },
 ];
+
 
 export const socials = [
   {

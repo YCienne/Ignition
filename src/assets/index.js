@@ -12,9 +12,9 @@ import robot from "./hero/hero1.jpg";
 import curve1 from "./collaboration/curve-1.svg";
 import curve2 from "./collaboration/curve-2.svg";
 
-import service1 from "./Slider/IG.mp4";
+import service1 from "./Slider/Ign.mp4";
 import about2 from "./Slider/Ign.mp4";
-import service3 from "./Slider/ser.jpg";
+import service3 from "./hero/ser.jpg";
 import gal1 from "./Slider/gal1.jpg";
 import gal2 from "./Slider/gal2.jpg";
 import gal3 from "./Slider/gal3.jpg";
